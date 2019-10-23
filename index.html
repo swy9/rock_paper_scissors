@@ -1,0 +1,83 @@
+<script>
+
+	let playerScore = 0;
+	let computerScore = 0;
+
+	function computerPlay() {
+		const randomNum = Math.floor(Math.random() * 3);
+
+		if (randomNum == 0) {
+			return "rock";
+		}
+
+		else if (randomNum == 1) {
+			return "paper";
+		}
+
+		else {
+			return "scissors";
+		}
+	};
+
+	function playRound(playerSelection, computerSelection) {
+
+		if ((playerSelection == 'rock' && computerSelection == 'scissors') || (playerSelection == 'paper' && computerSelection == 'rock') || (playerSelection == 'scissors' && computerSelection == 'paper')) {
+			return "P"; 
+			"You won! " + playerSelection + " beats " + computerSelection;
+			playscore++
+		} 
+
+		else if ((playerSelection == 'rock' && computerSelection == 'paper') || (playerSelection == 'paper' && computerSelection == 'scissors') || (playerSelection == 'scissors' && computerSelection == 'rock')) {
+			return "C"; 
+
+			"You lose! " + computerSelection + " beats " + playerSelection;
+			computerScore++;
+		}
+
+		else {
+			return "T"; 
+			"Tie!"
+		}
+	};
+
+	function game() {
+		for (let i = 1; i < 6; i++) {
+			let playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase();
+			let computerSelection = computerPlay();
+
+			if (playRound(playerSelection, computerSelection) == "P") {
+				console.log("You win Round " + i + "! " + playerSelection + " beats " + computerSelection);
+				playerScore++
+			}
+
+			else if (playRound(playerSelection, computerSelection) == "C") {
+				console.log("You lose Round " + i + ". " + computerSelection + " beats " + playerSelection);
+				computerScore++
+			}
+
+			else {
+				console.log("Round " + i + " is a tie! Both you and the computer chose " + playerSelection + ".");
+			}
+		
+			console.log("Your score: " + playerScore + ", Computer score: " + computerScore);
+		}
+
+	}
+
+	game()
+
+	if (playerScore > computerScore) {
+
+		console.log("Congratulations! You won this game!");
+
+	} else if (playerScore < computerScore) {
+
+		console.log("You lost this game. Better luck next time!");
+
+	} else {
+
+		console.log("The game ended in a tie!");
+
+	}
+
+</script>
